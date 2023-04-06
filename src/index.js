@@ -22,8 +22,8 @@ const giphyList = (state = [], action) => {
 function* fetchGiphy(action){
     try{
         console.log('in the fetchGiphy!', action)
-        const giphyList = yield axios.get('/api/category')
-        yield put({type:'SET_GIPHY', payload: giphyList.data })
+        const giphyList = yield axios.get(`/api/search/${action.payload}`)
+        yield put({type:'SET_GIPHY', payload:action.payload })
         console.log('here is the updated giphyList:', giphyList);
     }catch (error) {
             console.log('Could not fetchGiphy:', error)
