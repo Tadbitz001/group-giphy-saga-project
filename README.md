@@ -19,6 +19,11 @@ See the `database.sql` file for database setup and details. It offers some of th
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server` to start the server
 * Run `npm run client` to start the client
+* run `npm install dotenv`
+* run `npm install redux-saga`
+* run `npm install redux@4 react-redux@7 redux-logger@3`
+
+
 * Navigate to `localhost:3000`
 
 
