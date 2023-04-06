@@ -19,7 +19,7 @@ const giphyList = (state = [], action) => {
 }
 
 //This function will grab the different giphys from our DB
-function* fetchGiphy(ation){
+function* fetchGiphy(action){
     try{
         console.log('in the fetchGiphy!', action)
         const giphyList = yield axios.get('/api/category')
