@@ -18,13 +18,25 @@ const giphyList = (state = [], action) => {
     }
 }
 
+//This function will grab the different giphys from our DB
+function* fetchGiphy(action){
+    try{
+        console.log('in the fetchGiphy!', action)
+        const giphyList = yield axios.get('/api/category')
+        yield put({type:'SET_GIPHY', payload: giphyList.data })
+        console.log('here is the updated giphyList:', giphyList);
+    }catch (error) {
+            console.log('Could not fetchGiphy:', error)
+    }
+}
+
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga () {
     console.log('Inside rootSaga');
-    yield takeEvery()
-    // yield takeEvery()
-    // yield takeEvery()
+    //This will get all giphys from the DB
+    yield takeEvery('GET_GIPHY', fetchGiphy);
+   
   }
 
 const store = createStore(
