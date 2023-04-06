@@ -5,7 +5,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
-// import {put, takeEvery} from 'redux-saga/effects'
+import {put, takeEvery} from 'redux-saga/effects'
 import axios from 'axios';
 
 
