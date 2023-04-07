@@ -12,7 +12,9 @@ import axios from 'axios';
 const giphyList = (state = [], action) => {
     switch (action.type) {
         case 'SET_GIPHY':
+            console.log('in reducer looking at our state', state)
             return action.payload;
+    
         default:
             return state;
     }
