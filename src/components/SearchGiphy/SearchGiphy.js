@@ -1,27 +1,36 @@
-import React, {useState} from 'react';
-import  {useDispatch} from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
-
-function SearchGiphy(){
-
+function SearchGiphy() {
   const dispatch = useDispatch();
+  
+  const [newGiphy, setNewGiphy] = useState([])
 
-    function handleSubmit(){
-        console.log('Handle that submit, foo!')
+  function handleSubmit(event) {
+    console.log("Handle that submit, foo!");
+    event.preventDefault();
+    dispatch({
+      type: "GET_GIPHY",
+      payload: newGiphy
+    });
+  }
 
-    
-    }
-
-    return(
-        <>
-       <div>
-
-       <input type='text' placeholder="Search"></input>
-        <button onClick={handleSubmit}>SUBMIT</button>
-       </div>
-
-        </>
-    )
+function handleOnChange(event){
+    setNewGiphy(event.target.value)
+}
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <input type="text" onChange={handleOnChange} placeholder="Search"></input>
+        <button type='submit'>SUBMIT</button>
+      </form>
+    </>
+  );
 }
 
 export default SearchGiphy;
+
+// make this into a form
+// add payload to the dispatch
+//create a var to capture input
+//

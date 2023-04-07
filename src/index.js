@@ -12,7 +12,9 @@ import axios from 'axios';
 const giphyList = (state = [], action) => {
     switch (action.type) {
         case 'SET_GIPHY':
+            console.log('in reducer looking at our state', state)
             return action.payload;
+    
         default:
             return state;
     }
@@ -20,9 +22,10 @@ const giphyList = (state = [], action) => {
 
 //This function will grab the different giphys from our DB
 function* fetchGiphy(action){
+    console.log('looking at this ish', action.payload)
     try{
         console.log('in the fetchGiphy!', action)
-        const giphyList = yield axios.get('/api/category')
+        const giphyList = yield axios.get(`/api/search/${action.payload}`)
         yield put({type:'SET_GIPHY', payload: giphyList.data })
         console.log('here is the updated giphyList:', giphyList);
     }catch (error) {
