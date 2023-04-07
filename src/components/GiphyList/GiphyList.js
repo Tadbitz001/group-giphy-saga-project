@@ -9,18 +9,20 @@ function GiphyList(){
 
     useEffect(()=>{
        dispatch({type:'GET_GIPHY'})
+   
     },[]);
-
-
+    console.log('looking at giphy list', giphyList.data[0].url )
+    
     return (
         <>
         <div>
             <h3>LIST OF GIPHYS</h3>
+            <img src={giphyList?.data?.index?.images?.original?.url}/>
             <ul>
-                {giphyList.map((giphy) => {
-                    return (<li key={giphy.id}>{giphy.name}</li>
+                {/* {giphyList.map((giphy) => {
+                    return (<li key={giphy.id}>{giphy.url}</li>
                     )
-                })}
+                })} */}
             </ul>
 
         </div>

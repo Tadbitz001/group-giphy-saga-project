@@ -20,10 +20,11 @@ const giphyList = (state = [], action) => {
 
 //This function will grab the different giphys from our DB
 function* fetchGiphy(action){
+    console.log('looking at this ish', action.payload)
     try{
         console.log('in the fetchGiphy!', action)
         const giphyList = yield axios.get(`/api/search/${action.payload}`)
-        yield put({type:'SET_GIPHY', payload:action.payload })
+        yield put({type:'SET_GIPHY', payload: giphyList.data })
         console.log('here is the updated giphyList:', giphyList);
     }catch (error) {
             console.log('Could not fetchGiphy:', error)
