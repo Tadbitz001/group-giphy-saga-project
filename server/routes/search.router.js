@@ -1,7 +1,6 @@
 const { default: axios } = require('axios');
 const express = require('express');
 const pool = require('../modules/pool');
-require('dotenv').config();
 
 const router = express.Router();
 
